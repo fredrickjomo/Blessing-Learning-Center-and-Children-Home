@@ -45,7 +45,7 @@
             <tr>
 
                 <td>{{$t_count++}}</td>
-                <td class="profile"><img src="{{asset($child->photo)}}" alt="Photo"></td>
+                <td class="profile"><img src="/children_photo/{{$child->photo}}" alt="Photo"></td>
                 <td>{{$child->full_name}}</td>
                 <td>{{$child->gender}}</td>
                 <td>{{$child->age}}</td>

@@ -46,6 +46,7 @@
                     <th>Vulnerability</th>
                     <th>Education Level</th>
 
+
                 </tr>
                 </thead>
                 <tbody>
@@ -54,15 +55,25 @@
                         <tr>
 
                     <td>{{$users++}}</td>
-                    <td class="profile"><img src="{{$child->photo}}" alt="Photo"></td>
+                    <td class="profile"><img src="/children_photo/{{$child->photo}}" alt="Photo"></td>
                     <td>{{$child->full_name}}</td>
                     <td>{{$child->gender}}</td>
                     <td>{{$child->age}}</td>
                     <td>{{$child->vulnerability}}</td>
                     <td>{{$child->education_level}}</td>
                         <td><a href="">Select</a></td>
+                            <td><form  method="post"
+                                      action="{{route('children.destroy',$child->id)}}">
+                                    @csrf
+                                    @method('delete')
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </form> </td>
+
+                            </td>
                 </tr>
+
                         @endforeach
+
 
                 </tbody>
             </table>
@@ -72,7 +83,6 @@
     </div>
 
 
-    <a href="/Children/create" class="btn btn-default btn-lg">Add Child</a>
 </div>
 
 

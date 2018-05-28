@@ -134,7 +134,7 @@
             <div class="col-md-12 more-info">
                 <h2>Financial Donation</h2>
 
-                <p>We're vey thankful for your interest in supporting us financially by donating to our institution/orphanage,
+                <p>We're very thankful for your interest in supporting us financially by donating to our institution/orphanage,
                     there are different options/ways that you can help out - depending on which
                     country you are in. Feel free to contact us for more information</p>
                 <p>We believe that transparency is extremely important and want to be

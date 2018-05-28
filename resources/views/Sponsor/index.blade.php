@@ -245,7 +245,7 @@
                                        <label for="child">Child<span class="required">*</span> </label>
 
 
-                                       <select id="child" class="form-control" name="child_name" required>
+                                       <select id="child" class="form-control{{ $errors->has('child') ? ' is-invalid' : '' }}"  name="child_name" required>
                                            <option value="">---Select Child---</option>
                                            @foreach($children as $child_name )
 
@@ -253,21 +253,38 @@
                                            @endforeach
 
                                        </select>
+                                       @if ($errors->has('child_name'))
+                                           <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('child_name') }}</strong>
+                                    </span>
+                                       @endif
 
                                    </div>
                                    <div class="form-group row">
                                        <label for="amount">Amount of Sponsorship(Per Month)<span class="required">*(Minimum:$ 30)</span> </label>
-                                       <input placeholder="Minimum of $ 30" id="amount" required name="amount_per_month" spellcheck="false" class="form-control" />
-
+                                       <input placeholder="Minimum of $ 30" id="amount" required name="amount_per_month" spellcheck="false" class="form-control{{ $errors->has('amount_per_month') ? ' is-invalid' : '' }}"  />
+                                       @if ($errors->has('amount'))
+                                           <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('amount') }}</strong>
+                                    </span>
+                                       @endif
                                    </div>
                                    <div class="form-group row">
                                        <label for="method_of_payment">Method of Payment<span class="required">*</span> </label>
 
 
-                                       <select id="child" class="form-control" name="method_of_payment" required>
-                                           <option value="Bank">Bank Account</option>
+                                       <select id="method_of_payment" class="form-control{{ $errors->has('method_of_payment') ? ' is-invalid' : '' }}"  name="method_of_payment" required>
+                                           <option value="">---Select Method---</option>
+                                           <option value="Bank">1.Bank Account</option>
+                                           <option value="Western Union">2.Western Union</option>
+                                           <option value="PayPal">3.PayPal</option>>
 
                                        </select>
+                                       @if ($errors->has('method_of_payment'))
+                                           <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('method_of_payment') }}</strong>
+                                    </span>
+                                       @endif
 
                                    </div>
                                    <style>

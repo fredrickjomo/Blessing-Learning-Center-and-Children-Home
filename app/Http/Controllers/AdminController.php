@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Staff_members;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -159,6 +160,37 @@ class AdminController extends Controller
 
         return view('Admin/children.delete')->with(compact('users','children',
             'messages','all_messages','projects','events','children_details','t_count'));
+    }
+    //staff category
+
+    public function viewStaff(){
+        $t_count=1;
+        $users=DB::table('users')->count();
+        $children=DB::table('childrens')->count();
+        $messages=DB::table('contacts')->count();
+        $projects=DB::table('projects')->count();
+        $events=DB::table('charity_events')->count();
+
+        $all_messages=Contacts::all();
+        $staff=Staff_members::all();
+
+        return view('Admin/staff.index')->with(compact('users','children',
+            'messages','all_messages','projects','events','staff','t_count'));
+    }
+    public function addStaff(){
+        $users=DB::table('users')->count();
+        $children=DB::table('childrens')->count();
+        $messages=DB::table('contacts')->count();
+        $projects=DB::table('projects')->count();
+        $events=DB::table('charity_events')->count();
+
+        $all_messages=Contacts::all();
+        $staff=Staff_members::all();
+        return view('Admin/staff.add')->with(compact('users','children',
+            'messages','all_messages','projects','events','staff'));
+
+
+
     }
 
 }

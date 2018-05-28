@@ -24,15 +24,34 @@ Auth::routes();
 Route::middleware(['auth'])->group(function(){ //routes to be accessed once a user logs in
 
 
+
+
+
     Route::resource('user','UsersController');
-    Route::resource('Children','ChildrenController');
+
+    Route::resource('children','ChildrenController');
+    //Route::delete('Children/index/{id}','ChildrenController@destroy');
+
     Route::resource('Admin','AdminController');
+
+    //children routes
     Route::get('Admin/children/index','AdminController@viewChild')->name('Admin.viewChild');
     Route::get('Admin/children/add','AdminController@addChild')->name('Admin.addChild');
     Route::get('Admin/children/edit/update','AdminController@editChild')->name('Admin.editChild');
-    Route::get('Admin/children/delete','AdminController@deleteChild')->name('Admin.deleteChild');
+
+
+    Route::get('Admin/children/delete/','AdminController@deleteChild')->name('Admin.deleteChild');
+
+    //staff routes
+    Route::resource('staff','StaffController');
+    Route::get('Admin/staff/viewStaff','AdminController@viewStaff')->name('Admin.viewStaff');
+    Route::get('Admin/staff/add','AdminController@addStaff')->name('Admin.addStaff');
+
 
 });
+
+
+
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('Sponsor/index','SponsorshipController@store');
 Route::resource('Contact_Us','ContactsController');

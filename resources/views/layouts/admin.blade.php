@@ -124,7 +124,7 @@
                     <!-- User Menu-->
                     <li class="dropdown">
                         <a href="#!" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle drop icon-circle drop-image">
-                            <span><img class="img-circle " src="{{asset(Auth::user()->photo)}}" style="width:40px;" alt="User Image"></span>
+                            <span><img class="img-circle " src="/profile_pictures/{{Auth::user()->photo}}" style="width:40px;" alt="User Image"></span>
                             <span>{{Auth::user()->first_name}}&nbsp;<b>{{Auth::user()->last_name}}</b> <i class=" icofont icofont-simple-down"></i></span>
 
                         </a>
@@ -199,7 +199,7 @@
         <section class="sidebar" id="sidebar-scroll">
 
             <div class="user-panel">
-                <div class="f-left image"><img src="{{asset(Auth::user()->photo)}}" alt="User Image" class="img-circle"></div>
+                <div class="f-left image"><img src="/profile_pictures/{{Auth::user()->photo}}" alt="User Image" class="img-circle"></div>
                 <div class="f-left info">
                     <p>{{Auth::user()->first_name.' '.Auth::user()->last_name}}</p>
                     <p class="designation">Administrator<i class="icofont icofont-caret-down m-l-5"></i></p>
@@ -243,8 +243,8 @@
 
                 <li class="treeview"><a class="waves-effect waves-dark" href="#!"><i class="icon-briefcase"></i><span> Staff</span><i class="icon-arrow-down"></i></a>
                     <ul class="treeview-menu">
-                        <li><a class="waves-effect waves-dark" href="#"><i class="icon-arrow-right"></i> View Staff</a></li>
-                        <li><a class="waves-effect waves-dark" href="#"><i class="icon-arrow-right"></i> Add New Member</a></li>
+                        <li><a class="waves-effect waves-dark" href="{{route('Admin.viewStaff')}}"><i class="icon-arrow-right"></i> View Staff</a></li>
+                        <li><a class="waves-effect waves-dark" href="{{route('Admin.addStaff')}}"><i class="icon-arrow-right"></i> Add New Member</a></li>
                         <li><a class="waves-effect waves-dark" href="#"><i class="icon-arrow-right"></i> Edit/Update Member Information</a></li>
                         <li><a class="waves-effect waves-dark" href="#"><i class="icon-arrow-right"></i> Remove Member</a></li>
                     </ul>
@@ -352,152 +352,7 @@
                                 <span>20min ago</span>
                             </div>
                         </div>
-                        <div class="media friendlist-box" data-id="3" data-status="online" data-username="Alice"  data-toggle="tooltip" data-placement="left" title="Alice">
-                            <a class="media-left" href="#!">
-                                <img class="media-object img-circle" src="assets/images/avatar-2.png" alt="Generic placeholder image">
-                                <div class="live-status bg-success"></div>
-                            </a>
-                            <div class="media-body">
-                                <div class="friend-header">Alice</div>
-                                <span>1 hour ago</span>
-                            </div>
-                        </div>
-                        <div class="media friendlist-box" data-id="7" data-status="offline" data-username="Michael Scofield" data-toggle="tooltip" data-placement="left" title="Michael Scofield">
-                            <a class="media-left" href="#!">
-                                <img class="media-object img-circle" src="assets/images/avatar-3.png" alt="Generic placeholder image">
-                                <div class="live-status bg-danger"></div>
-                            </a>
-                            <div class="media-body">
-                                <div class="friend-header">Michael Scofield</div>
-                                <span>3 hours ago</span>
-                            </div>
-                        </div>
-                        <div class="media friendlist-box" data-id="5" data-status="online" data-username="Irina Shayk" data-toggle="tooltip" data-placement="left" title="Irina Shayk">
-                            <a class="media-left" href="#!">
-                                <img class="media-object img-circle" src="assets/images/avatar-4.png" alt="Generic placeholder image">
-                                <div class="live-status bg-success"></div>
-                            </a>
-                            <div class="media-body">
-                                <div class="friend-header">Irina Shayk</div>
-                                <span>1 day ago</span>
-                            </div>
-                        </div>
-                        <div class="media friendlist-box" data-id="6" data-status="offline" data-username="Sara Tancredi" data-toggle="tooltip" data-placement="left" title="Sara Tancredi">
-                            <a class="media-left" href="#!">
-                                <img class="media-object img-circle" src="assets/images/avatar-5.png" alt="Generic placeholder image">
-                                <div class="live-status bg-danger"></div>
-                            </a>
-                            <div class="media-body">
-                                <div class="friend-header">Sara Tancredi</div>
-                                <span>2 days ago</span>
-                            </div>
-                        </div>
-                        <div class="media friendlist-box" data-id="1" data-status="online" data-username="Josephin Doe" data-toggle="tooltip" data-placement="left" title="Josephin Doe">
-                            <a class="media-left" href="#!">
-                                <img class="media-object img-circle" src="assets/images/avatar-1.png" alt="Generic placeholder image">
-                                <div class="live-status bg-success"></div>
-                            </a>
-                            <div class="media-body">
-                                <div class="friend-header">Josephin Doe</div>
-                                <span>20min ago</span>
-                            </div>
-                        </div>
-                        <div class="media friendlist-box" data-id="3" data-status="online" data-username="Alice" data-toggle="tooltip" data-placement="left" title="Alice">
-                            <a class="media-left" href="#!">
-                                <img class="media-object img-circle" src="assets/images/avatar-2.png" alt="Generic placeholder image">
-                                <div class="live-status bg-success"></div>
-                            </a>
-                            <div class="media-body">
-                                <div class="friend-header">Alice</div>
-                                <span>1 hour ago</span>
-                            </div>
-                        </div>
-                        <div class="media friendlist-box" data-id="1" data-status="online" data-username="Josephin Doe" data-toggle="tooltip" data-placement="left" title="Josephin Doe">
 
-                            <a class="media-left" href="#!">
-                                <img class="media-object img-circle" src="assets/images/avatar-1.png" alt="Generic placeholder image">
-                                <div class="live-status bg-success"></div>
-                            </a>
-                            <div class="media-body">
-                                <div class="friend-header">Josephin Doe</div>
-                                <span>20min ago</span>
-                            </div>
-                        </div>
-                        <div class="media friendlist-box" data-id="3" data-status="online" data-username="Alice" data-toggle="tooltip" data-placement="left" title="Alice">
-                            <a class="media-left" href="#!">
-                                <img class="media-object img-circle" src="assets/images/avatar-2.png" alt="Generic placeholder image">
-                                <div class="live-status bg-success"></div>
-                            </a>
-                            <div class="media-body">
-                                <div class="friend-header">Alice</div>
-                                <span>1 hour ago</span>
-                            </div>
-                        </div>
-                        <div class="media friendlist-box" data-id="1" data-status="online" data-username="Josephin Doe" data-toggle="tooltip"  data-placement="left" title="Josephin Doe">
-
-                            <a class="media-left" href="#!">
-                                <img class="media-object img-circle" src="assets/images/avatar-1.png" alt="Generic placeholder image">
-                                <div class="live-status bg-success"></div>
-                            </a>
-                            <div class="media-body">
-                                <div class="friend-header">Josephin Doe</div>
-                                <span>20min ago</span>
-                            </div>
-                        </div>
-                        <div class="media friendlist-box" data-id="3" data-status="online" data-username="Alice"  data-toggle="tooltip" data-placement="left" title="Alice">
-                            <a class="media-left" href="#!">
-                                <img class="media-object img-circle" src="assets/images/avatar-2.png" alt="Generic placeholder image">
-                                <div class="live-status bg-success"></div>
-                            </a>
-                            <div class="media-body">
-                                <div class="friend-header">Alice</div>
-                                <span>1 hour ago</span>
-                            </div>
-                        </div>
-                        <div class="media friendlist-box" data-id="1" data-status="online" data-username="Josephin Doe" data-toggle="tooltip" data-placement="left" title="Josephin Doe">
-
-                            <a class="media-left" href="#!">
-                                <img class="media-object img-circle" src="assets/images/avatar-1.png" alt="Generic placeholder image">
-                                <div class="live-status bg-success"></div>
-                            </a>
-                            <div class="media-body">
-                                <div class="friend-header">Josephin Doe</div>
-                                <span>20min ago</span>
-                            </div>
-                        </div>
-                        <div class="media friendlist-box" data-id="1" data-status="online" data-username="Josephin Doe" data-toggle="tooltip" data-placement="left" title="Josephin Doe">
-
-                            <a class="media-left" href="#!">
-                                <img class="media-object img-circle" src="assets/images/avatar-1.png" alt="Generic placeholder image">
-                                <div class="live-status bg-success"></div>
-                            </a>
-                            <div class="media-body">
-                                <div class="friend-header">Josephin Doe</div>
-                                <span>20min ago</span>
-                            </div>
-                        </div>
-                        <div class="media friendlist-box" data-id="1" data-status="online" data-username="Josephin Doe" data-toggle="tooltip" data-placement="left" title="Josephin Doe">
-
-                            <a class="media-left" href="#!">
-                                <img class="media-object img-circle" src="assets/images/avatar-1.png" alt="Generic placeholder image">
-                                <div class="live-status bg-success"></div>
-                            </a>
-                            <div class="media-body">
-                                <div class="friend-header">Josephin Doe</div>
-                                <span>20min ago</span>
-                            </div>
-                        </div>
-                        <div class="media friendlist-box" data-id="1" data-status="online" data-username="Josephin Doe" data-toggle="tooltip" data-placement="left" title="Josephin Doe">
-
-                            <a class="media-left" href="#!">
-                                <img class="media-object img-circle" src="assets/images/avatar-1.png" alt="Generic placeholder image">
-                                <div class="live-status bg-success"></div>
-                            </a>
-                            <div class="media-body">
-                                <div class="friend-header">Josephin Doe</div>
-                                <span>20min ago</span>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -522,20 +377,7 @@
                 </div>
             </div>
         </div>
-        <div class="media chat-messages">
-            <div class="media-body chat-menu-reply">
-                <div class="">
-                    <p class="chat-cont">I'm just looking around. Will you tell me something about yourself?</p>
-                    <p class="chat-time">8:20 a.m.</p>
-                </div>
-            </div>
-            <div class="media-right photo-table">
-                <a href="#!">
-                    <img class="media-object img-circle m-t-5" src="assets/images/avatar-2.png" alt="Generic placeholder image">
-                    <div class="live-status bg-success"></div>
-                </a>
-            </div>
-        </div>
+
         <div class="media chat-reply-box">
             <div class="md-input-wrapper">
                 <input type="text" class="md-form-control" id="inputEmail" name="inputEmail" >
@@ -666,30 +508,10 @@
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-6">
-                    <div class="card">
-                        <div class="bg-danger dashboard-resource">
-                            <div class="card-block">
-                                <h5 class="counter">20.85</h5>%
-                                <h5 class="resource-used">Resource Used</h5>
-                            </div>
-                            <div class="card-block">
-                                <span class="resource-barchart"></span>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
                 <div class="col-lg-2 col-md-6">
-                    <div class="card">
-                        <div class="bg-warning dashboard-resource m-t-5">
-                            <div class="card-block">
-                                <h5 class="counter">20.85</h5>%
-                                <h5 class="resource-used">Resource Used</h5>
-                            </div>
-                            <div class="card-block">
-                                <span class="resource-barchart"></span>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
             </div>
             <!-- 1-3-block row end -->

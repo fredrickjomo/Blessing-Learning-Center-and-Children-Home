@@ -14,7 +14,7 @@
         }
 
     </style>
-    <form method="post" action="{{route('Children.store')}}" enctype="multipart/form-data">
+    <form method="post" action="{{route('children.store')}}" enctype="multipart/form-data">
     {{csrf_field()}} <!--laravel inbuilt function to ensure laravel forms work-->
         <div class="row">
             <div class="col-md-6">
@@ -50,9 +50,9 @@
                     <label for="vulnerability">Vulnerability<span class="required">*</span></label>
                     <select id="vulnerability" class="form-control" name="vulnerability" required>
                         <option value="">---Select Vulnerability---</option>
-                        <option value="Total_Orphan">Total Orphan</option>
-                        <option value="Partial_Orphan">Partial Orphan(Single Parent)</option>
-                        <option value="Poor_Background">Poor Background</option>
+                        <option value="Total Orphan">Total Orphan</option>
+                        <option value="Partial Orphan">Partial Orphan(Single Parent)</option>
+                        <option value="Poor Background">Poor Background</option>
 
                     </select>
                     @if ($errors->has('vulnerability'))
@@ -68,23 +68,23 @@
                     <label for="education_level">Education Level<span class="required">*</span></label>
                     <select id="education_level" class="form-control" name="education_level" required>
                         <option value="">---Select Education Level---</option>
-                        <option value="Lower_Primary">Lower Primary</option>
-                        <option value="Upper_Primary">Upper Primary</option>
+                        <option value="Lower Primary">Lower Primary</option>
+                        <option value="Upper Primary">Upper Primary</option>
                         <option value="Secondary">Secondary</option>
                         <option value="Tertiary">Tertiary</option>
 
                     </select>
-                    @if ($errors->has('education_level'))
-                        <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('education_level') }}</strong>
-                                    </span>
-                    @endif
+
 
                 </div>
-
+                @if ($errors->has('education_level'))
+                    <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('education_level') }}</strong>
+                                    </span>
+                @endif
                 <div class="form-group">
-                    <label for="photo">Photo<span class="required">*</span></label>
-                    <input type="file" class="form-control" name="photo" required>
+                    <label for="photo">Photo<span class="required" style="color: black;">&nbsp;(optional)</span></label>
+                    <input type="file" class="form-control" name="photo">
                 </div>
 
             </div>

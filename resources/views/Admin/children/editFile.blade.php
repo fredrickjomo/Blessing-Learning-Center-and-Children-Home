@@ -8,7 +8,7 @@ Edit/Update Child Information
 
 @section('content')
 
-    <form method="post" action="{{route('Children.update',[$children->id])}}" enctype="multipart/form-data">
+    <form method="post" action="{{route('children.update',[$child->id])}}" enctype="multipart/form-data">
 
     {{csrf_field()}} <!--laravel inbuilt function to ensure laravel forms work-->
         <input type="hidden" name="_method" value="put">
@@ -16,14 +16,14 @@ Edit/Update Child Information
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="full_name">Full Name<span class="required">*</span> </label>
-                    <input placeholder="Enter Full Name" id="full_name" required name="full_name" spellcheck="false" class="form-control" />
+                    <input value="{{$child->full_name}}" id="full_name" required name="full_name" spellcheck="false" class="form-control" />
 
                 </div>
 
                 <div class="form-group">
                     <label for="gender">Gender<span class="required">*</span></label>
                     <select id="gender" class="form-control" name="gender" required>
-                        <option value="">---Select Gender---</option>
+                        <option value="{{$child->gender}}">{{$child->gender}}</option>
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
 
@@ -37,7 +37,7 @@ Edit/Update Child Information
                 </div>
                 <div class="form-group">
                     <label for="age">Age<span class="required">*</span></label>
-                    <input type="number" id="age" placeholder="Enter age" name="age" spellcheck="false" required class="form-control"/>
+                    <input type="number" id="age" value="{{$child->age}}" name="age" spellcheck="false" required class="form-control"/>
                 </div>
 
             </div>
@@ -45,10 +45,10 @@ Edit/Update Child Information
                 <div class="form-group">
                     <label for="vulnerability">Vulnerability<span class="required">*</span></label>
                     <select id="vulnerability" class="form-control" name="vulnerability" required>
-                        <option value="">---Select Vulnerability---</option>
-                        <option value="Total_Orphan">Total Orphan</option>
-                        <option value="Partial_Orphan">Partial Orphan(Single Parent)</option>
-                        <option value="Poor_Background">Poor Background</option>
+                        <option value="{{$child->vulnerability}}">{{$child->vulnerability}}</option>
+                        <option value="Total Orphan">Total Orphan</option>
+                        <option value="Partial Orphan">Partial Orphan(Single Parent)</option>
+                        <option value="Poor Background">Poor Background</option>
 
                     </select>
                     @if ($errors->has('vulnerability'))
@@ -63,9 +63,9 @@ Edit/Update Child Information
                 <div class="form-group">
                     <label for="education_level">Education Level<span class="required">*</span></label>
                     <select id="education_level" class="form-control" name="education_level" required>
-                        <option value="">---Select Education Level---</option>
-                        <option value="Lower_Primary">Lower Primary</option>
-                        <option value="Upper_Primary">Upper Primary</option>
+                        <option value="{{$child->education_level}}">{{$child->education_level}}</option>
+                        <option value="Lower Primary">Lower Primary</option>
+                        <option value="Upper Primary">Upper Primary</option>
                         <option value="Secondary">Secondary</option>
                         <option value="Tertiary">Tertiary</option>
 
@@ -77,10 +77,17 @@ Edit/Update Child Information
                     @endif
 
                 </div>
+                <style>
+                    .profile-image img{
+                        height: 30px;
+                        width: 30px;
+                    }
 
-                <div class="form-group">
-                    <label for="photo">Photo<span class="required">*</span></label>
-                    <input type="file" class="form-control" name="photo" required>
+                </style>
+
+                <div class="form-group profile-image">
+                    <label for="photo">Photo<span class="required">&nbsp;(optional)<i class="fa fa-angle-right" style="color: red;"></i><h9>current</h9></span></label>
+                    <img src="/children_photo/{{$child->photo}}" id="photo"><input id="photo" type="file" class="form-control" name="photo" value="{{$child->photo}}">
                 </div>
 
             </div>

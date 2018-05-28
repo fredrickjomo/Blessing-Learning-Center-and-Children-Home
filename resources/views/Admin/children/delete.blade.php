@@ -47,25 +47,21 @@ Remove/Delete Child Information
             <tr>
 
                 <td>{{$t_count++}}</td>
-                <td class="profile"><img src="{{asset($child->photo)}}" alt="Photo"></td>
+                <td class="profile"><img src="/children_photo/{{$child->photo}}" alt="Photo"></td>
                 <td>{{$child->full_name}}</td>
                 <td>{{$child->gender}}</td>
                 <td>{{$child->age}}</td>
                 <td>{{$child->vulnerability}}</td>
                 <td>{{$child->education_level}}</td>
-                <td><a href="#"
-                       onclick="
-                    var result=confirm('Are you sure you want to delete this child?');
-                    if (result){
-                        event.preventDefault();
-                        document.getElementById('delete-form').submit();
-                    }"><button id="edit">Remove</button></a></td>
+                <td><form  method="post"
+                           action="{{route('children.destroy',$child->id)}}"
+                    onsubmit="return confirm('Are you sure you want to delete this child?')">
+                        @csrf
+                        @method('delete')
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form></td>
             </tr>
-            <form id="delete-form" action="{{route('Children.destroy',$child->id)}}"
-                  method="post" style="display: none;">
-                <input type="hidden" name="_method" value="delete">
-                {{csrf_field()}}
-            </form>
+
         @endforeach
 
         </tbody>

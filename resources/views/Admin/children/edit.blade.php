@@ -1,11 +1,10 @@
 @extends('layouts.admin')
 @section('header')
-    Edit/Update Child Information
-@endsection
+    Edit / Update child information
+    @endsection
 @section('page-icon')
-<i class="fa fa-edit"></i>
-@endsection
-
+    <i class="fa fa-edit"></i>
+    @endsection
 @section('content')
     <style>
         .profile{
@@ -22,9 +21,6 @@
             background-color: #1b1e21;
             color: #f8f9fa;
         }
-        .table tr td a:hover{
-            color: #f8f9fa;
-        }
 
     </style>
     <table class="col-12 table table-dark table-bordered table-hover">
@@ -37,7 +33,7 @@
             <th>Age</th>
             <th>Vulnerability</th>
             <th>Education Level</th>
-            <th></th>
+            <th>Edit / Update </th>
 
         </tr>
         </thead>
@@ -47,23 +43,18 @@
             <tr>
 
                 <td>{{$t_count++}}</td>
-                <td class="profile"><img src="{{asset($child->photo)}}" alt="Photo"></td>
+                <td class="profile"><img src="/children_photo/{{$child->photo}}" alt="Photo"></td>
                 <td>{{$child->full_name}}</td>
                 <td>{{$child->gender}}</td>
                 <td>{{$child->age}}</td>
                 <td>{{$child->vulnerability}}</td>
                 <td>{{$child->education_level}}</td>
-                <td><a href="/Children/{{$child->id}}/edit"><button id="edit">Edit/Update</button></a></td>
+                <td><a href="{{route('children.edit',$child->id)}}"><button class=" btn-primary">Edit/Update</button></a></td>
             </tr>
         @endforeach
 
         </tbody>
     </table>
-<!--Edit Section-->
-
-
-
-    <!--End of Edit Section-->
 
 
 @endsection

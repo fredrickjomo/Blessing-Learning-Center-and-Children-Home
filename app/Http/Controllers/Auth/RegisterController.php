@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Image;
+use File;
 
 class RegisterController extends Controller
 {
@@ -53,10 +55,10 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
-            'gender' => 'required|string|max:255',
+            'gender' => 'required|string|min:8|max:255',
             'nationality'=>'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
+            'password' =>'required|string|min:6|confirmed',
         ]);
 
     }
@@ -70,12 +72,17 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         $request=request();
-        $profileImage=$request->file('photo');
-        $profileImageSaveAsName=time().Auth::id()."-profile".
-        $profileImage->getClientOriginalExtension();
-        $upload_path='profile_pictures/';
-        $profileImage_url=$upload_path.$profileImageSaveAsName;
-        $success=$profileImage->move($upload_path,$profileImageSaveAsName);
+        $photo='default.jpg';
+        if($request->hasFile('photo')) {
+            $destinationPath = '/children_photo/';
+            $file = $request->photo;
+            $extension = $file->getClientOriginalExtension();
+            $fileName = rand(0101, 9999) . Auth::id() . '-profile_photo' . $extension;
+            Image::make($file)->resize(400, 300)->save(public_path('/profile_pictures/' . $fileName));
+            $file->move($destinationPath, $fileName);
+
+            $photo = $fileName;
+        }
         return User::create([
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
@@ -83,7 +90,7 @@ class RegisterController extends Controller
             'nationality' => $data['nationality'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'photo'=>$profileImage_url,
+            'photo'=>$photo,
         ]);
     }
     public function showRegistrationForm()

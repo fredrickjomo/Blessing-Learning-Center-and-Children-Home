@@ -36,6 +36,24 @@ class StaffController extends Controller
     public function store(Request $request)
     {
         //
+        $photo='default.jpg';
+
+        $staff=Staff_members::create([
+            'first_name'=>$request->input('first_name'),
+            'middle_name'=>$request->input('middle_name'),
+            'last_name'=>$request->input('last_name'),
+            'age'=>$request->input('age'),
+            'gender'=>$request->input('gender'),
+            'position'=>$request->input('position'),
+            'photo'=>$photo,
+
+        ]);
+
+        if($staff){
+            return redirect()->route('Admin.addStaff')->with('success','Staff information added successfully');
+
+        }
+        return back()->withInput()->with('error');
     }
 
     /**

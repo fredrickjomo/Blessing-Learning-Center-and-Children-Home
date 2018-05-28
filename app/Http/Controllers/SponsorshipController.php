@@ -54,7 +54,7 @@ class SponsorshipController extends Controller
 
         if (Auth::check()){
             $input=request()->validate([
-                'amount_per_month'=>'required|max:5',
+                'amount_per_month'=>'required|max:3',
                 'method_of_payment'=>'required'
             ],[
                 'amount_per_month.required'=>'Enter correct amount of sponsorship'
